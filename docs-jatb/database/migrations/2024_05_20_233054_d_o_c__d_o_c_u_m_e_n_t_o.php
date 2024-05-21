@@ -12,6 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('DOC_DOCUMENTO', function (Blueprint $table) {
+            $table->bigIncrements('DOC_ID');
+            $table->string('DOC_NOMBRE');
+            $table->string('DOC_CODIGO');
+            $table->string('DOC_CONTENIDO');
+            $table->unsignedBigInteger('DOC_ID_TIPO');
+            $table->unsignedBigInteger('DOC_ID_PROCESO');
+            $table->foreign('DOC_ID_TIPO')->references('TIP_ID')->on('TIP_TIPO_DOC');
+            $table->foreign('DOC_ID_PROCESO')->references('PRO_ID')->on('PRO_PROCESO');
+            $table->timestamps();
+        });
+
     }
 
     /**

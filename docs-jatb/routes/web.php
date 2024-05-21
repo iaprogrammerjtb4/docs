@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PROPROCESOController;
+use App\Http\Controllers\DOCDOCUMENTOController;
+use App\Http\Controllers\TIPTIPODOCController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +28,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('pro_proceso', PROPROCESOController::class);
+
+Route::resource('doc_documento', DOCDOCUMENTOController::class);
+
+Route::resource('tip_tipo_doc', TIPTIPODOCController::class);
