@@ -18,8 +18,8 @@ use App\Http\Controllers\TIPTIPODOCController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->middleware('auth');
 
 Auth::routes();
 
@@ -27,10 +27,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
 
-Route::resource('pro_proceso', PROPROCESOController::class);
+Route::resource('pro_proceso', PROPROCESOController::class)->middleware('auth');
 
-Route::resource('doc_documento', DOCDOCUMENTOController::class);
+Route::resource('doc_documento', DOCDOCUMENTOController::class)->middleware('auth');
 
-Route::resource('tip_tipo_doc', TIPTIPODOCController::class);
+Route::resource('tip_tipo_doc', TIPTIPODOCController::class)->middleware('auth');
+
+Route::get('/uploads/{filename}', function ($filename) {
+    $path = storage_path('app/public/uploads/' . $filename);
+
+    if (!file_exists($path)) {
+        abort(404);
+    }
+
+    return response()->file($path);
+})->where('filename', '.*');

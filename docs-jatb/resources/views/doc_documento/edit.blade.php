@@ -11,10 +11,10 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} D O C D O C U M E N T O</span>
+                        <span class="card-title">{{ __('Update') }} DOCUMENTO</span>
                     </div>
                     <div class="card-body bg-white">
-                        <form method="POST" action="{{ route('doc_documento.update', $dOCDOCUMENTO->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('doc_documento.update', $dOCDOCUMENTO->DOC_ID) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 

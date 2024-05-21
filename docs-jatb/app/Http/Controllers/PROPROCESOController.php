@@ -22,6 +22,10 @@ class PROPROCESOController extends Controller
             ->with('i', ($request->input('page', 1) - 1) * $pROPROCESOS->perPage());
     }
 
+    public function getProcesos(){
+        return PROPROCESO::all();
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -70,15 +74,15 @@ class PROPROCESOController extends Controller
     {
         $pROPROCESO->update($request->validated());
 
-        return Redirect::route('pro_proceso-s.index')
+        return Redirect::route('pro_proceso.index')
             ->with('success', 'PROPROCESO updated successfully');
     }
 
     public function destroy($id): RedirectResponse
     {
-        PROPROCESO::WHERE('PRO_ID', $id)->first()->delete();
+        PROPROCESO::WHERE('PRO_ID', $id)->delete();
 
-        return Redirect::route('pro_proceso-s.index')
+        return Redirect::route('pro_proceso.index')
             ->with('success', 'PROPROCESO deleted successfully');
     }
 }

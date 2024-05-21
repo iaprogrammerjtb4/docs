@@ -4,9 +4,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
+                <div class="flex justify-center items-center p-5">
+                    <div class="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden">
+                        <img src="{{ asset('storage/img/isotipo.jpeg') }}" class="w-full" alt="Isotipo">
+                        <div class="px-6 py-4 text-center">
+                            <div class="font-bold text-xl mb-2">DOCS-JATB</div>
+                            <p class="text-center">GESTOR DE ARCHIVOS</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -65,9 +71,8 @@
                             </div>
                         </div>
                     </form>
+                    <a href="{{ route('register') }}" class="text text-info" target="_blank" >Register</a>
                 </div>
-            </div>
         </div>
-    </div>
 </div>
 @endsection

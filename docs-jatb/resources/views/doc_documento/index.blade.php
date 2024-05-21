@@ -54,14 +54,17 @@
 										<td >{{ $dOCDOCUMENTO->DOC_ID }}</td>
 										<td >{{ $dOCDOCUMENTO->DOC_NOMBRE }}</td>
 										<td >{{ $dOCDOCUMENTO->DOC_CODIGO }}</td>
-										<td >{{ $dOCDOCUMENTO->DOC_CONTENIDO }}</td>
+										<td >
+                                        <iframe src="{{ $dOCDOCUMENTO->DOC_CONTENIDO }}" width="100%" height="300"></iframe>
+                                            <a href="/{{ $dOCDOCUMENTO->DOC_CONTENIDO }}" target="blank">Ver</a>
+                                        </td>
 										<td >{{ $dOCDOCUMENTO->DOC_ID_TIPO }}</td>
 										<td >{{ $dOCDOCUMENTO->DOC_ID_PROCESO }}</td>
 
                                             <td>
-                                                <form action="{{ route('doc_documento.destroy', $dOCDOCUMENTO->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('doc_documento.show', $dOCDOCUMENTO->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('doc_documento.edit', $dOCDOCUMENTO->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('doc_documento.destroy', $dOCDOCUMENTO->DOC_ID) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('doc_documento.show', $dOCDOCUMENTO->DOC_ID) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('doc_documento.edit', $dOCDOCUMENTO->DOC_ID) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>

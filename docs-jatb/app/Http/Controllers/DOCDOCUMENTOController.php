@@ -48,7 +48,7 @@ class DOCDOCUMENTOController extends Controller
      */
     public function show($id): View
     {
-        $dOCDOCUMENTO = DOCDOCUMENTO::find($id);
+        $dOCDOCUMENTO = DOCDOCUMENTO::where('DOC_ID',$id)->first();
 
         return view('doc_documento.show', compact('dOCDOCUMENTO'));
     }
@@ -58,7 +58,7 @@ class DOCDOCUMENTOController extends Controller
      */
     public function edit($id): View
     {
-        $dOCDOCUMENTO = DOCDOCUMENTO::find($id);
+        $dOCDOCUMENTO = DOCDOCUMENTO::where('DOC_ID',$id)->first();
 
         return view('doc_documento.edit', compact('dOCDOCUMENTO'));
     }
@@ -76,7 +76,7 @@ class DOCDOCUMENTOController extends Controller
 
     public function destroy($id): RedirectResponse
     {
-        DOCDOCUMENTO::find($id)->delete();
+        DOCDOCUMENTO::where('DOC_ID',$id)->delete();
 
         return Redirect::route('doc_documento.index')
             ->with('success', 'DOCDOCUMENTO deleted successfully');

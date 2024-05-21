@@ -22,10 +22,8 @@ class DOCDOCUMENTORequest extends FormRequest
     public function rules(): array
     {
         return [
-			'DOC_ID' => 'required',
 			'DOC_NOMBRE' => 'required|string',
 			'DOC_CODIGO' => 'required|string',
-			'DOC_CONTENIDO' => 'required|string',
 			'DOC_ID_TIPO' => 'required',
 			'DOC_ID_PROCESO' => 'required',
         ];

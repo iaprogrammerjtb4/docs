@@ -22,6 +22,9 @@ class TIPTIPODOCController extends Controller
             ->with('i', ($request->input('page', 1) - 1) * $tIPTIPODOCS->perPage());
     }
 
+    public function getTipo(){
+        return TIPTIPODOC::all();
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -48,7 +51,7 @@ class TIPTIPODOCController extends Controller
      */
     public function show($id): View
     {
-        $tIPTIPODOC = TIPTIPODOC::find($id);
+        $tIPTIPODOC = TIPTIPODOC::where('TIP_ID',$id)->first();
 
         return view('tip_tipo_doc.show', compact('tIPTIPODOC'));
     }
@@ -76,7 +79,7 @@ class TIPTIPODOCController extends Controller
 
     public function destroy($id): RedirectResponse
     {
-        TIPTIPODOC::find($id)->delete();
+        TIPTIPODOC::where('TIP_ID',$id)->delete();
 
         return Redirect::route('tip_tipo_doc.index')
             ->with('success', 'TIPTIPODOC deleted successfully');
